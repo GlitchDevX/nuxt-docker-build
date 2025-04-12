@@ -8,11 +8,7 @@ on:
 
 jobs:
   build-project:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: Get latest code
         uses: actions/checkout@v4
@@ -25,4 +21,4 @@ jobs:
         timeout-minutes: 10
         with:
           push: false
-          tags: test-image-${{matrix.os}}
+          tags: test-image
