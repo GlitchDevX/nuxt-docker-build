@@ -1,0 +1,23 @@
+name: Example Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  build-project:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v4
+
+      - name: Build Project
+        uses: docker/docker/build-push-action@v6
+        timeout-minutes: 10
+        with:
+          push: false
+          tags: test-image-${{matrix.os}}
