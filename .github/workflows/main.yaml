@@ -1,4 +1,5 @@
 name: Example Build
+permissions: write-all
 
 on:
   workflow_dispatch:
