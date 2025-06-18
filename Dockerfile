@@ -1,10 +1,14 @@
 # Stage 1: Generate Static Files
 FROM node:lts-alpine AS builder
 
+RUN npm i -g pnpm
+
 COPY . .
 
-RUN npm ci
-RUN npm run generate
+# couldn't get it working without this parameter
+RUN pnpm i --shamefully-hoist 
+
+RUN pnpm run generate
 
 
 # Stage 2: Build Final Image
