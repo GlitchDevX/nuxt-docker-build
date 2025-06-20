@@ -7,13 +7,13 @@ COPY . .
 
 RUN pnpm i
 
-RUN pnpm run generate -- --cwd=.
+RUN pnpm run generate -- result
 
 
 # Stage 2: Build Final Image
 FROM nginx:stable-alpine
 
-COPY --from=builder .output/public /usr/share/nginx/html
+COPY --from=builder result/.output/public /usr/share/nginx/html
 
 EXPOSE 80
 
