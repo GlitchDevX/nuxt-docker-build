@@ -7,7 +7,7 @@ COPY . .
 
 RUN pnpm i
 
-RUN pnpm run generate
+RUN pnpm run generate -- --cwd=.
 
 
 # Stage 2: Build Final Image
