@@ -5,8 +5,7 @@ RUN npm i -g pnpm
 
 COPY . .
 
-# couldn't get it working without this parameter
-RUN pnpm i --shamefully-hoist 
+RUN pnpm i
 
 RUN pnpm run generate
 
